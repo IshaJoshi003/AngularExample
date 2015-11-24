@@ -1,0 +1,108 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\isha>cd C:\parkingProject\workspace
+
+C:\parkingProject\workspace>mkdir angularjs -parking
+
+C:\parkingProject\workspace>mkdir angularjs-parking
+
+C:\parkingProject\workspace>cd angularjs-parking
+
+C:\parkingProject\workspace\angularjs-parking>bower init
+? name angularjs-parking
+? description Parking Management System
+? main file
+? what types of modules does this package expose?
+? keywords
+? authors IshaJoshi003 <ishajoshi003@gmail.com>
+? license MIT
+? homepage
+? set currently installed components as dependencies? No
+? add commonly ignored files to ignore list? No
+? would you like to mark this package as private which prevents it from being accidentally published to the registry? No
+
+{
+  name: 'angularjs-parking',
+  authors: [
+    'IshaJoshi003 <ishajoshi003@gmail.com>'
+  ],
+  description: 'Parking Management System',
+  main: '',
+  moduleType: [],
+  license: 'MIT',
+  homepage: ''
+}
+
+? Looks good? Yes
+
+C:\parkingProject\workspace\angularjs-parking>bower search angular
+Search results:
+
+    angular git://github.com/angular/bower-angular.git
+    angular-mocks git://github.com/angular/bower-angular-mocks.git
+    angular-resource git://github.com/angular/bower-angular-resource.git
+    angular-sanitize git://github.com/angular/bower-angular-sanitize.git
+    angular-route git://github.com/angular/bower-angular-route.git
+    angular-cookies git://github.com/angular/bower-angular-cookies.git
+    angular-animate git://github.com/angular/bower-angular-animate.git
+    angular-bootstrap git://github.com/angular-ui/bootstrap-bower.git
+    angular-ui-router git://github.com/angular-ui/ui-router
+    angular-scenario git://github.com/angular/bower-angular-scenario.git
+    angular-touch git://github.com/angular/bower-angular-touch.git
+    angular-ui-utils git://github.com/angular-ui/ui-utils.git
+    angular-translate git://github.com/PascalPrecht/bower-angular-translate.git
+    restangular git://github.com/mgonto/restangular
+    angular-ui-select2 git://github.com/angular-ui/ui-select2.git
+    angular-ui git://github.com/angular-ui/angular-ui.git
+    angular-i18n git://github.com/angular/bower-angular-i18n.git
+    angular-ui-select git://github.com/angular-ui/ui-select.git
+    angular-strap git://github.com/mgcrea/angular-strap.git
+    ng-file-upload git://github.com/danialfarid/angular-file-upload-bower.git
+    angular-translate-loader-static-files git://github.com/PascalPrecht/bower-angular-translate-loader-static-files.git
+    angular-local-storage git://github.com/grevory/angular-local-storage.git
+    angular-moment git://github.com/urish/angular-moment.git
+    angular-breadcrumb git://github.com/ncuillery/angular-breadcrumb.git
+    angular-loading-bar git://github.com/chieffancypants/angular-loading-bar.git
+    angular-ui-sortable git://github.com/angular-ui/ui-sortable.git
+    angular-loader git://github.com/angular/bower-angular-loader.git
+    ng-grid git://github.com/angular-ui/ng-grid.git
+    angular-ui-bootstrap-bower git://github.com/angular-ui/bootstrap-bower
+    angular-motion git://github.com/mgcrea/angular-motion.git
+
+C:\parkingProject\workspace\angularjs-parking>bower install -S angular
+bower angular#*                 cached git://github.com/angular/bower-angular.git#1.4.8
+bower angular#*               validate 1.4.8 against git://github.com/angular/bower-angular.git#*
+bower angular#~1.4.8           install angular#1.4.8
+
+angular#1.4.8 bower_components\angular
+
+C:\parkingProject\workspace\angularjs-parking>mkdir app
+
+C:\parkingProject\workspace\angularjs-parking>cd app
+
+C:\parkingProject\workspace\angularjs-parking\app>mkdir scripts style view images
+
+C:\parkingProject\workspace\angularjs-parking\app>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\parkingProject\workspace\angularjs-parking\app>echo index.html
+index.html
+
+C:\parkingProject\workspace\angularjs-parking\app>delete index.html
+'delete' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\parkingProject\workspace\angularjs-parking\app>del index.html
+Could Not Find C:\parkingProject\workspace\angularjs-parking\app\index.html
+
+C:\parkingProject\workspace\angularjs-parking\app>echo > index.html
+
+C:\parkingProject\workspace\angularjs-parking\app> cd scripts
+
+C:\parkingProject\workspace\angularjs-parking\app\scripts>echo > app.js
+
+C:\parkingProject\workspace\angularjs-parking\app\scripts>echo > controller.js
+
+C:\parkingProject\workspace\angularjs-parking\app\scripts>
