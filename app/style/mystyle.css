@@ -1,0 +1,10 @@
+@charset"utf-8";
+
+
+.odd {
+  color: red;
+
+}
+.even {
+  color: blue;
+}

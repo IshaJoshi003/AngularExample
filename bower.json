@@ -1,0 +1,14 @@
+{
+  "name": "angularjs-parking",
+  "authors": [
+    "IshaJoshi003 <ishajoshi003@gmail.com>"
+  ],
+  "description": "Parking Management System",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}

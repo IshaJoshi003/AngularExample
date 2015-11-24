@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="parkingApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style/mystyle.css" rel="stylesheet" type="text/css">
+<title>Parking App </title>
+</head>
+
+<body ng-controller="parkingAppCtrl">
+	<h1>Is Parking</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>SL #</th>
+				<th>Plate #</th>
+				<th>Even #</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="car in cars" >
+
+
+				<td >{{$index}}</td>
+				<td ng-class-odd="'odd'" ng-class-even="'even'">
+				{{car.plate}}
+				</td>
+				<td >{{$even}}<td>
+				
+
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+
+	<label>Enter Plate #</label>
+	
+   
+	
+	<input type="text" ng-model="car.plate" maxlength="7">
+
+	<button  ng-click="save(car)"  >Save</button><br><br>
+	
+    <div ng-hide="car.plate.length" >Please Enter Some value ...</div>
+
+	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controller.js"></script>
+</body>
+</html>  	
