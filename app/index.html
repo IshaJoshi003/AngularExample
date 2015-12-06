@@ -1,53 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en" ng-app="parkingApp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="style/mystyle.css" rel="stylesheet" type="text/css">
+<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
 <title>Parking App </title>
 </head>
 
-<body ng-controller="parkingAppCtrl">
-	<h1>Is Parking</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>SL #</th>
-				<th>Plate #</th>
-				<th>Even #</th>
+<body class="container-fluid" ng-controller="parkingAppCtrl">
+     <div class="panel panel-primary">
+     <div class="panel-heading"><center><h2>Parking Form</h2></center></div>
+      <div class="panel-body">
 
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="car in cars" >
+     <table class="table table-striped">
+          <thead>
+               <tr>
+                    <th>SL #</th>
+                    <th>Plate #</th>
+                    
+                    <th>Entry Date#</th>
+                    <th>TimeIn</th>
+                    <th>Exit Date#</th>
+                    <th>TimeOut</th>
+
+                    
 
 
-				<td >{{$index}}</td>
-				<td ng-class-odd="'odd'" ng-class-even="'even'">
-				{{car.plate}}
-				</td>
-				<td >{{$even}}<td>
-				
+               </tr>
+          </thead>
+          <tbody>
+               <tr ng-repeat="car in cars" >
 
-			</tr>
-		</tbody>
-	</table>
-	
-	<br>
 
-	<label>Enter Plate #</label>
-	
+                    <td >
+                          <div ng-hide="editingData[car.id]">{{$index }}</div>
+                          <div ng-show="editingData[car.id]"><input type="text"  ng-model="$index"></div>
+                    </td>
+
+                    <td ng-class-odd="'odd'" ng-class-even="'even'">
+                    <div ng-hide="editingData[car.id]"> {{car.plate | sliceString:'-'}}</div>
+                    <div ng-show="editingData[car.id]"><input type="text"  ng-model="car.plate"></div>
+                    
+
+                    </td>
+                    
+                     <td >
+                          <div ng-hide="editingData[car.id]">{{ car.date1| modifyDate1:'/':'/' }}</div>
+                           <div ng-show="editingData[car.id]"><input type="text"  ng-model="car.date1"></div>    
+
+                    </td>
+                     <td>
+                         <div ng-hide="editingData[car.id]">{{car.timeIn |timeIn }}</div>
+                         <div ng-show="editingData[car.id]"><input type="text"  ng-model="car.timeIn"></div>    
+                    </td>
+                     <td >
+                         <div ng-hide="editingData[car.id]">{{ car.date2|modifyDate2}}</div>
+                         <div ng-show="editingData[car.id]"><input type="text"  ng-model="car.date2"></div>  
+
+                     </td> 
+                     <td>
+                         <div ng-hide="editingData[car.id]">{{car.timeOut| timeOut}}</div>
+                         <div ng-show="editingData[car.id]"><input type="text"  ng-model="car.timeOut"></div>  
+
+                     </td>
+                     <td>
+                        <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow()"/>
+                     </td> 
+                     <td>
+                         <button  class="btn btn-primary " ng-hide="editingData[car.id]" ng-click="modify(car)">Modify</button>
+                         <button  class="btn btn-primary " ng-show="editingData[car.id]" ng-click="update(car)">Update</button>
+                         
+                       
+                     </td>   
+                   
+                    
+
+               </tr>
+          </tbody>
+     </table>
+     
+     <br>
+     <form name="carform" >
+
+     <label>Enter Plate #</label>
+     
    
-	
-	<input type="text" ng-model="car.plate" maxlength="7">
+      
+     <input 
+          type="text" 
+          name="plate" 
+          class="input-sm" 
+          ng-model="car.plate" 
+          ng-required="true" 
+          ng-pattern="/^[a-zA-Z0-9]+$/"
+           ng-maxlength="8" 
+           ng-minlength="7" >
+   
+     
+     
+    
+     <div class="error" ng-show="carform.plate.$error.required" >Please Enter your plate number...</div>
+      <div class="error" ng-show="carform.plate.$error.maxlength" >Only 8 characters ...</div>
+     <label>Enter Entry Date# </label>
 
-	<button  ng-click="save(car)"  >Save</button><br><br>
-	
-    <div ng-hide="car.plate.length" >Please Enter Some value ...</div>
+     <input  
+            name="date1"
+            type="text"
+            class="input-sm"
+            ng-model="car.date1" 
+            ng-pattern="/(0[1-9]|1[012])[\d]{2}[\d]{4}/"
+            ng-maxlength="8"
+            placeholder="MMDDYYYY"
+            ng-required="true"
+            >
 
+      <div class="error" ng-show="carform.date1.$error.required" >Please fill date...</div>
+        <div ng-show="carform.date1.$error.pattern" class="error">Invalid date </div>   
+ 
+      <div ng-show="carform.date1.$error.maxlength" class="error">Only 8 digits </div>    
+      <label>TimeIn#</label>
+      <input  type="text" 
+               name="timein"
+              class="input-sm" 
+              ng-maxlength="5"
+              ng-model="car.timeIn" 
+              ng-pattern="/[\d]{2}[:][\d]{2}/"
+              placeholder="HH:MM"
+              ng-required="true"><br> 
+
+      <div class="error" ng-show="carform.timein.$error.required" >Please Enter Time...</div>
+      <div ng-show="carform.timein.$error.maxlength" class="error">Only 4 digits </div> 
+       <div ng-show="carform.timein.$error.pattern" class="error">Enter HH:MM </div>           
+      
+     <label>Enter  Exit Date#</label>
+      <input 
+          
+           name="date2"
+           type="text"  
+           class="input-sm" 
+           ng-model="car.date2" 
+           ng-pattern="/(0[1-9]|1[012])[\d]{2}[\d]{4}/"
+           ng-required="true"
+           placeholder="MMDDYYYY"
+           ng-maxlength="8">
+
+     <div class="error" ng-show="carform.date2.$error.required" >Please fill date...</div>
+       
+     <div ng-show="carform.date2.$error.maxlength" class="error">Only 8 digits </div> 
+       <div ng-show="carform.date2.$error.pattern" class="error">Invalid date </div>   
+
+     <label>TimeOut(optional) </label> 
+       <input  type="text"
+               name="timeout"
+               class="input-sm" 
+                ng-pattern="/[\d]{2}[:][\d]{2}/"
+                placeholder="HH:MM"
+               ng-model="car.timeOut"
+                ><br> 
+       
+       
+        <div ng-show="carform.timeout.$error.maxlength" class="error">Only 4 digits </div> 
+        <!-- <div ng-show="carform.timeout.$error.pattern" class="error">Enter HH:MM </div>       
+      -->
+
+       <button  class="btn btn-success btn-lg" ng-click="saveCar(car)" ng-disabled="carform.$invalid">Add</button>
+       
+   
+ </form>
+
+ </div>
+</div>
+     
 	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
+     
 	<script type="text/javascript" src="scripts/controller.js"></script>
+     <script type="text/javascript" src="scripts/filter.js"></script>
+     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+     <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
 </body>
 </html>  	
