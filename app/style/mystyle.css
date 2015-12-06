@@ -8,3 +8,26 @@
 .even {
   color: blue;
 }
+label{
+	display:inline-block;
+	float:left;
+	width:300px;
+}
+.error{
+	color:red;
+	font-style: bold;
+	font-family: Arial Sans-serif;
+	font-size: 18px;
+
+}
+.container-fluid{
+	margin:20px 120px 100px 150px ;
+}
+.panel{
+	margin:20px 120px 100px 150px ;
+}
+/*div{ 
+	
+	overflow:auto;
+	}*/
+	
